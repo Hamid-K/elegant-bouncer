@@ -109,6 +109,7 @@ pub struct JBIG2SegInfo {
 */
 
 #[derive(Clone)]
+#[allow(dead_code)]
 pub struct JBIG2TextRegionSegment {
     pub seg_num:        u32,
 
@@ -273,6 +274,7 @@ impl JBIG2GenericRefinementRegionSegment {
 }
 
 #[derive(Clone)]
+#[allow(dead_code)]
 pub struct JBIG2SymbolDictionarySegment {
     // Extra Identifier
     pub seg_num:        u32,
@@ -371,6 +373,7 @@ impl fmt::Display for JBIG2SegmentType {
 }
 
 #[derive(Clone)]
+#[allow(dead_code)]
 pub enum JBIG2SegmentData {
     Unassigned,
     JBIG2SymbolDictionarySegment(JBIG2SymbolDictionarySegment),
@@ -897,7 +900,7 @@ fn create_pdf(path: &path::Path, global_stream: &Vec<u8>, main_stream: &Vec<u8>)
                     "cm",
                     vec![Object::Real(1f32), 0.into(), 0.into(), Object::Real(1f32), 0.into(), 0.into()],
                 ),
-                Operation::new("Do", vec![img_name.clone().into()]),
+                Operation::new("Do", vec![img_name.into()]),
                 Operation::new("Q", vec![]),
             ]
         }.encode().unwrap()));

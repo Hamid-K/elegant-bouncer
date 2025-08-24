@@ -10,7 +10,7 @@
 // Author:
 //  Matt Suiche (msuiche) 22-Sep-2023
 //
-use log::{info, debug, error};
+use log::{debug, error};
 use std::path;
 
 use crate::errors::*;
@@ -77,6 +77,7 @@ impl WebpHeader {
     }
 }
 
+#[allow(dead_code)]
 pub struct VP8LBitReader<'a> {
     pub data: &'a [u8],       // Reference to the underlying data.
     pub idx: usize,           // Index to the current byte.

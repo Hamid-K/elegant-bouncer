@@ -14,7 +14,7 @@
 // 22-Sep-2023 (msuiche) - Initial implementation
 //
 use std::fmt;
-use log::{error, warn, debug, trace};
+use log::{error, debug, trace};
 
 use crate::webp::VP8LBitReader;
 

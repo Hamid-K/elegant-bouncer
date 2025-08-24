@@ -34,6 +34,7 @@ use std::{
 use rayon::prelude::*;
 
 #[derive(Clone)]
+#[allow(dead_code)]
 pub struct TUIState {
     pub current_files: Vec<String>,  // Changed to show multiple active files
     pub files_scanned: usize,
@@ -46,6 +47,7 @@ pub struct TUIState {
 }
 
 #[derive(Clone)]
+#[allow(dead_code)]
 pub struct ThreatInfo {
     pub file_path: String,
     pub threat_type: String,
@@ -80,6 +82,7 @@ impl App {
     }
 }
 
+#[allow(unused_assignments, unused_variables)]
 pub fn run_tui_scan(files: Vec<PathBuf>) -> Result<Vec<crate::ScanResult>, Box<dyn std::error::Error>> {
     // Setup panic handler to restore terminal
     let original_hook = std::panic::take_hook();

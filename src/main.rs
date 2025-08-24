@@ -32,15 +32,11 @@ use std::path::{Path, PathBuf};
 use std::env;
 use std::fs;
 use lopdf::Document;
-use rusqlite::{Connection, Result as RusqliteResult};
+use rusqlite::Connection;
 use std::sync::mpsc;
 use std::thread;
 use std::time::Duration;
 use walkdir::WalkDir;
-use indicatif::{ProgressBar, ProgressStyle};
-use rayon::prelude::*;
-use std::sync::{Arc, Mutex};
-use std::time::Instant;
 
 
 use crate::jbig2 as FORCEDENTRY;
@@ -352,6 +348,10 @@ struct Args {
     #[clap(short, long)]
     messaging_only: bool,
 
+    /// Activate TUI.
+    #[clap(short, long)]
+    tui: bool,
+
     /// File extensions to scan (comma-separated, e.g., "pdf,webp,ttf")
     /// Default: pdf,gif,webp,jpg,jpeg,png,tif,tiff,dng,ttf,otf
     #[clap(short, long, value_delimiter = ',')]
@@ -594,6 +594,7 @@ fn setup_logging(level: LevelFilter) -> Result<()> {
     Ok(())
 }
 
+#[allow(unused_assignments)]
 fn main() -> Result<()> {
     let args = Args::parse();
     
